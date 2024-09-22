@@ -1,9 +1,9 @@
-bases:
-  - ../base
+resources:
+- ../base
 images:
-  - name: example
-    newName: ghcr.io/rakutentech/passenger-go-exporter/passenger-app
-    newTag: 6.0.14
-  - name: passenger-exporter
-    newName: ghcr.io/rakutentech/passenger-go-exporter 
-    newTag: v1.2.3
+- name: example
+  newName: ghcr.io/rakutentech/passenger-go-exporter/passenger-app
+  newTag: 6.0.23
+- name: passenger-exporter
+  newName: ghcr.io/rakutentech/passenger-go-exporter
+  newTag: v1.2.3
