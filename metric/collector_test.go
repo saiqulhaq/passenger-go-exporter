@@ -77,7 +77,7 @@ func TestCollectError(t *testing.T) {
 		o := recover()
 		v, ok := o.(error)
 		if !ok || v.Error() != "mock error" {
-			assert.Fail(t, "unkown error", "unkown error [%+v]", o)
+			assert.Fail(t, "unknown error", "unknown error [%+v]", o)
 		}
 	}()
 

@@ -17,9 +17,9 @@ import (
 // https://godoc.org/github.com/prometheus/common/promlog/flag
 func NewLogger(logfmt string, loglevel string) log.Logger {
 	promLogLevel := &promlog.AllowedLevel{}
-	promLogLevel.Set(loglevel)
+	_ = promLogLevel.Set(loglevel)
 	promLogFormat := &promlog.AllowedFormat{}
-	promLogFormat.Set(logfmt)
+	_ = promLogFormat.Set(logfmt)
 	promlogConfig := &promlog.Config{
 		Level:  promLogLevel,
 		Format: promLogFormat,

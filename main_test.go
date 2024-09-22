@@ -24,7 +24,7 @@ func TestRun(t *testing.T) {
 	}
 	os.Setenv("PASSENGER_INSTANCE_REGISTRY_DIR", "/sock")
 
-	statusc := make(chan string) //startup message channel.
+	statusc := make(chan string) // startup message channel.
 	runExporter(t, statusc)
 
 	callPassengerApp(t)
@@ -40,7 +40,7 @@ func TestRun(t *testing.T) {
 func TestRunNotFound(t *testing.T) {
 	os.Setenv("PASSENGER_INSTANCE_REGISTRY_DIR", "/tmp")
 
-	statusc := make(chan string, 1) //startup message channel.
+	statusc := make(chan string, 1) // startup message channel.
 
 	runExporter(t, statusc)
 
@@ -116,11 +116,14 @@ func checkMetrics(t *testing.T, url string) {
 
 	if !existsProcessCount {
 		t.Fatal("not found passenger_go_process_count")
-	} else if !existsProcessProcessed {
+	}
+	if !existsProcessProcessed {
 		t.Fatal("not found passenger_go_process_processed")
-	} else if !existsProcessRealMemory {
+	}
+	if !existsProcessRealMemory {
 		t.Fatal("not found passenger_go_process_real_memory")
-	} else if !existsWaitListSie {
+	}
+	if !existsWaitListSie {
 		t.Fatal("not found passenger_go_wait_list_size")
 	}
 }

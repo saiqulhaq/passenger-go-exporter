@@ -30,7 +30,7 @@ func main() {
 	logger := logging.NewLogger(*logfmt, *loglevel)
 
 	// Search passenge instance.
-	level.Info(logger).Log(logging.Msg("Searching passenger instance."))
+	_ = level.Info(logger).Log(logging.Msg("Searching passenger instance."))
 	c := passenger.Context{}
 	factory := passenger.CreateFactory(c)
 	server := factory.FindInstance()
@@ -38,20 +38,20 @@ func main() {
 		if server != nil {
 			break
 		}
-		level.Info(logger).Log(logging.Msg("passenger not found. wait 200ms."))
+		_ = level.Info(logger).Log(logging.Msg("passenger not found. wait 200ms."))
 		time.Sleep(time.Millisecond * 200)
 		server = factory.FindInstance()
 	}
 	if server == nil {
-		level.Error(logger).Log(logging.Msg("passenger not found."))
+		_ = level.Error(logger).Log(logging.Msg("passenger not found."))
 		return
 	}
-	level.Info(logger).Log(logging.Msg("Found passenger instance."))
+	_ = level.Info(logger).Log(logging.Msg("Found passenger instance."))
 
 	// Collector setup.
 	collector := metric.NewCollector(server, logger)
 	prometheus.MustRegister(collector)
-	level.Info(logger).Log(logging.Msgf("Starting passenger-go-exporter[port %d]", *listenPort))
+	_ = level.Info(logger).Log(logging.Msgf("Starting passenger-go-exporter[port %d]", *listenPort))
 
 	// HTTP Server setup.
 	http.Handle("/metrics", promhttp.Handler())
@@ -64,6 +64,6 @@ func main() {
 	})
 	err := http.ListenAndServe(fmt.Sprintf(":%d", *listenPort), nil)
 	if err != nil {
-		level.Error(logger).Log(logging.Err(&err))
+		_ = level.Error(logger).Log(logging.Err(&err))
 	}
 }

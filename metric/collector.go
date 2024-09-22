@@ -48,8 +48,8 @@ func (collector *Collector) Describe(ch chan<- *prometheus.Desc) {
 func (collector *Collector) Collect(ch chan<- prometheus.Metric) {
 	info, err := collector.server.Metrics()
 	if err != nil {
-		level.Error(collector.logger).Log(logging.Err(&err))
-		level.Error(collector.logger).Log(logging.Msg("restart process."))
+		_ = level.Error(collector.logger).Log(logging.Err(&err))
+		_ = level.Error(collector.logger).Log(logging.Msg("restart process."))
 		panic(err)
 	}
 	for _, sg := range info.SuperGroups {

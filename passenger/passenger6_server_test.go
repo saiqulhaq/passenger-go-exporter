@@ -59,7 +59,7 @@ func TestFindInstanceUsePassenger(t *testing.T) {
 
 	factory := &Passenger6ServerFactory{}
 	server := factory.FindInstance()
-	assert.NotNil(t, server) //because of not connect.
+	assert.NotNil(t, server) // because of not connect.
 
 	pool, err := server.Metrics()
 	assert.NotNil(t, pool)
@@ -143,5 +143,5 @@ func TestFindInstanceXMLNotConnect(t *testing.T) {
 
 	factory := &Passenger6ServerFactory{}
 	server := factory.FindInstance()
-	assert.Nil(t, server) //because of not connect.
+	assert.Nil(t, server) // because of not connect.
 }
