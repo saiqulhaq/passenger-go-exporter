@@ -34,7 +34,7 @@ func main() {
 	c := passenger.Context{}
 	factory := passenger.CreateFactory(c)
 	server := factory.FindInstance()
-	for i := 0; i < 20; i++ {
+	for i := 0; i < 2000; i++ {
 		if server != nil {
 			break
 		}
